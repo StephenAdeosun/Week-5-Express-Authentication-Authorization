@@ -1,0 +1,14 @@
+[
+    {
+        "username": "stephen",
+        "password": "1234",
+        "api_key": "6ih3vz0nx02b8hs1k71qud",
+        "role": "admin"
+    },
+    {
+        "username": "adebayo",
+        "password": "1234",
+        "api_key": "g1kt0wdjzhekjfp4wbarih",
+        "role": "user"
+    }
+]
