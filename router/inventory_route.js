@@ -6,9 +6,7 @@ const router = express.Router() // create a router object
 
 
 router.use(middleware.apiKeyAuth)
-router.get('/' , controller.getAllItems)
-
-
+router.get('/' ,middleware.checkUser, controller.getAllItems)
 router.get('/:id',middleware.checkUser, controller.getItemById)
 router.post('/', middleware.checkAdmin,  controller.addItem)
 router.put('/:id',middleware.checkAdmin, controller.updateItem)

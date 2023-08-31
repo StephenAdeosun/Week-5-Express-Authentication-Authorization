@@ -33,22 +33,19 @@ const checkAdmin =(req, res, next) => {
     }
 }
 
-const checkUser =(req, res, next) => {
+
+const checkUser = (req,res,next)=>{
     const userData = fs.readFileSync('./users/users.json')
-    const userDataJson = JSON.parse(userData)
-    const user = userDataJson.find(user => user.username === req.body.username)
-    if (user.role === 'user') {
+    const userDb = JSON.parse(userData)
+    const authHeader = req.headers.api_key
+
+    const existingUser = userDb.find(user => user.api_key === authHeader)
+    if(existingUser.role === 'user'){
         next()
-    } else {
-        res.status(401).send('Unauthorized')
+    }
+    else{
+        res.status(401).send('You are not  Authorized')
     }
 }
 
-// const checkAdmin = (req, res, next) => {
-//     if (req.user.user_role !== 'admin') {
-//         return res.status(403).json({ message: 'You are not authorized!' });
-//     }
-
-//     next()
-// }
 module.exports = {checkAdmin, apiKeyAuth , checkUser}
